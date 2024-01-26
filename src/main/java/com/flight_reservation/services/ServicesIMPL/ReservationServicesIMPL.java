@@ -6,6 +6,7 @@ import com.flight_reservation.entity.Reservation;
 import com.flight_reservation.payload.FlightDto;
 import com.flight_reservation.payload.PassengerDto;
 import com.flight_reservation.payload.ReservationDto;
+import com.flight_reservation.payload.ReservationUpdateRequestDto;
 import com.flight_reservation.repository.FlightRepository;
 import com.flight_reservation.repository.PassengerRepository;
 import com.flight_reservation.repository.ReservationRepository;
@@ -64,5 +65,18 @@ public class ReservationServicesIMPL implements ReservationServices {
         reservationDto.setNoOfBags(reservedTicket.getNoOfBags());
         reservationDto.setCheckedIn(reservedTicket.getCheckedIn());
         return reservationDto;
+    }
+
+    @Override
+    public Reservation findReservtaion(long id) {
+        return reservationRepository.findById(id).get();
+    }
+
+    @Override
+    public Reservation updateReservation(ReservationUpdateRequestDto request) {
+        Reservation reservation = reservationRepository.findById(request.getId()).get();
+        reservation.setCheckedIn(request.getCheckedIn());
+        reservation.setNoOfBags(request.getNumberOfBags());
+        return reservationRepository.save(reservation);
     }
 }
