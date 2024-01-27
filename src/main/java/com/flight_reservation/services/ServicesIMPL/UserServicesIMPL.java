@@ -20,10 +20,11 @@ public class UserServicesIMPL implements UserServices {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
-        user.setUsername(userDto.getUsename());
+        user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         User savedData = userRepository.save(user);
-        if (savedData==null) return false;
+        if (savedData == null)
+            return false;
         return true;
     }
 
@@ -36,6 +37,5 @@ public class UserServicesIMPL implements UserServices {
         }
         return true;
     }
-
 
 }

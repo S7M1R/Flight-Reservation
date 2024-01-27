@@ -12,7 +12,7 @@ public class UserDto {
     private Long id;
 
     @NotNull
-    private String usename;
+    private String username;
 
     @NotNull
     private String firstName;

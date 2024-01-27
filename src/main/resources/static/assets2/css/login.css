@@ -1,0 +1,165 @@
+/* Use a custom font for the whole page */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+/* Use variables to store common values */
+:root {
+  --bg-color: #fafaee;
+  --main-color: #ffffff;
+  --accent-color: #005092;
+  --white-color: #fff;
+  --black-color: #000;
+  --gray-color: #ccc;
+  --dark-gray-color: #999;
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 16px;
+  --border-radius: 30px;
+  --box-shadow: 0 4px 40px rgba(53, 53, 53, 0.637);
+  --transition-duration: 0.3s;
+}
+
+/* Set the background color and font for the body */
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+/* Center the container div and give it some padding and margin */
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the main div with a black border and a main color background */
+.main {
+  height: 50vh;
+  width: 40vh;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--black-color);
+  background-color: var(--main-color);
+  padding: 40px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Align the h3 element to the center */
+h3 {
+  font-size: 2.2em;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+/* Style the form div with some margin and display it as flex */
+.form {
+  margin: 10px 0;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the inputbox divs with some margin and display them as flex */
+.inputbox {
+  width: 60vw;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style the input elements with some padding, border and width */
+.inputbox input {
+  width: 350px;
+  padding: 12px;
+  border: 1px solid var(--black-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  color: var(--black-color);
+  outline: none;
+}
+
+/* Add some hover and focus effects to the input elements */
+.inputbox input:hover,
+.inputbox input:focus {
+  border-color: var(--dark-gray-color);
+  box-shadow: inset 0 0 10px var(--dark-gray-color);
+}
+
+.inputbox label{
+    width: 299px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+
+/* Style the label elements with some margin and width */
+label {
+  /* Add margin to separate label from the input box */
+  width: auto; /* Set width to auto to allow flexibility */
+  font-weight: 600; /* Set font weight to 600 */
+  /* Use flexbox to align the label to the left of the input box */
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  align-items: center;
+}
+
+/* Style the submit button with some color, padding, border and cursor */
+.submit-btn {
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+.submit-btn input {
+    width: 180px;
+  background-color: transparent;
+  border: 3px solid black;
+  color: black;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-duration);
+  font-weight: 700;
+}
+
+/* Add some hover and active effects to the submit button */
+.submit-btn input:hover {
+  background-color: rgb(0, 0, 59);
+  color: white;
+  transform: scale(1.1);
+}
+
+.submit-btn input:active {
+  transform: scale(0.9);
+}
+
+/* Style the msg div with some color and text-align */
+.msg {
+  color: red;
+  text-align: center;
+}
+
+/* Style the links div with some margin and text-align */
+.links {
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Style the a elements with some color and text-decoration */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all var(--transition-duration);
+}
+
+/* Add some hover effect to the a elements */
+a:hover {
+  text-decoration: underline;
+  color: var(--dark-gray-color);
+}

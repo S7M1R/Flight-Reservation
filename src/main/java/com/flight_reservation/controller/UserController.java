@@ -3,16 +3,17 @@ package com.flight_reservation.controller;
 import com.flight_reservation.payload.UserDto;
 import com.flight_reservation.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 
 @Controller
 public class UserController {
+
+    @RequestMapping("")
+    public String Indexpage() {
+        return "public/Index";
+    }
 
     @RequestMapping("/login")
     public String LoginPage() {
@@ -27,9 +28,8 @@ public class UserController {
     @Autowired
     private UserServices userServices;
 
-
-    @RequestMapping("/SignupData")
-    public String SaveSignupData(@ModelAttribute("UserDto") UserDto userDto , Model model) {
+    @PostMapping("/verifySignup")
+    public String SaveSignupData(@ModelAttribute("UserDto") UserDto userDto, Model model) {
         boolean SignupStatus = userServices.SaveSignupData(userDto);
         if (!SignupStatus) {
             model.addAttribute("msg", "Signup Failed please try again");
@@ -39,17 +39,15 @@ public class UserController {
         return "public/Login";
     }
 
-    @RequestMapping("/verifyLogin")
-    public String verifyLogin(@RequestParam("email") String Email, @RequestParam("username") String Username,  @RequestParam("password") String Password, Model model) {
+    @PostMapping("/verifyLogin")
+    public String verifyLogin(@RequestParam("input") String Email, @RequestParam("input") String Username,
+            @RequestParam("password") String Password, Model model) {
         boolean verificationStatus = userServices.verifyUserLogin(Email, Username, Password);
-        if (!verificationStatus){
+        if (!verificationStatus) {
             model.addAttribute("msg", "Invalid User Credentials Try again!");
             return "public/Login";
         }
         return "private/Home";
     }
-
-
-
 
 }
