@@ -130,7 +130,7 @@
 						<img src="${pageContext.request.contextPath}/assets/images/gallery02.jpg">
 					</div>
 					<div class="item-content">
-						<h5 class="item-title mbr-fonts-style display-5"><strong>Itinerary Managemen</strong></h5>
+						<h5 class="item-title mbr-fonts-style display-5"><strong>Itinerary Management</strong></h5>
 
 						<p class="mbr-text mbr-fonts-style display-7">
 							Take control of your travel arrangements with our comprehensive itinerary management service. Access a centralized hub where all your booked flights and associated services are conveniently organized. Retrieve vital information such as flight details, departure times, and any linked accommodations or car rentals. Our user-friendly interface ensures that your travel plans are always at your fingertips, allowing for efficient and organized trip management.<br>

@@ -33,7 +33,6 @@ public class ReservationServicesIMPL implements ReservationServices {
         Optional<Flight> flight = flightRepository.findById(flightId);
         Flight flightData = flight.get();
         FlightDto flightDto = new FlightDto();
-        flightDto.setFlightNo(flightData.getFlightNo());
         flightDto.setAirLine(flightData.getAirLine());
         flightDto.setArrivalCity(flightData.getArrivalCity());
         flightDto.setDepartureCity(flightData.getDepartureCity());

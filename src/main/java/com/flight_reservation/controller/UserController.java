@@ -39,7 +39,7 @@ public class UserController {
         return "public/Login";
     }
 
-    @PostMapping("/verifyLogin")
+    @PostMapping("/Authenticated")
     public String verifyLogin(@RequestParam("input") String Email, @RequestParam("input") String Username,
             @RequestParam("password") String Password, Model model) {
         boolean verificationStatus = userServices.verifyUserLogin(Email, Username, Password);

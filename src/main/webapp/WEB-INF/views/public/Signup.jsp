@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/kisspng-airplane-aircraft-maintenance-flight-transport-aeroplane-5ac7b14f05e3e0.1254718215230364950241-96x55.jpg" type="image/x-icon">
   <meta name="description" content="">
-  <title>Login</title>
+  <title>Signup</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-grid.min.css">
@@ -43,9 +43,7 @@
 				</div>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features04-w">Services</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#header01-7">About</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#form02-6">Contact</a></li></ul>
-				
-				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="index.html#form02-6">&nbsp; &nbsp;HOME&nbsp; &nbsp;&nbsp;<br></a></div>
+				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="/">&nbsp; &nbsp;HOME&nbsp; &nbsp;&nbsp;<br></a></div>
 			</div>
 		</div>
 	</nav>

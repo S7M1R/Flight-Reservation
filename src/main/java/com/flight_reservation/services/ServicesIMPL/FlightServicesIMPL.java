@@ -18,11 +18,12 @@ public class FlightServicesIMPL implements FlightServices {
 
     @Override
     public List<FlightDto> findFlight(String from, String to, Date dateOfDeparture) {
-        List<Flight> flights = flightRepository.findByFlightNoAndDepartureCityAndDateOfDeparture(from, to, dateOfDeparture);
+        List<Flight> flights = flightRepository.findByDepartureCityAndArrivalCityAndDateOfDeparture(from, to,
+                dateOfDeparture);
         List<FlightDto> flightDtos = new ArrayList<>();
         for (Flight flight : flights) {
             FlightDto flightDto = new FlightDto();
-            flightDto.setFlightNo(flight.getFlightNo());
+            flightDto.setId(flight.getId());
             flightDto.setAirLine(flight.getAirLine());
             flightDto.setArrivalCity(flight.getArrivalCity());
             flightDto.setDepartureCity(flight.getDepartureCity());

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +17,16 @@ public class FlightController {
     @Autowired
     private FlightServices flightServices;
 
-    @RequestMapping("/findFlight")
-    public String findFlight(@RequestParam("from") String From, @RequestParam("to") String To, @RequestParam("dateOfDeparture") @DateTimeFormat(pattern = "MM-DD-YYYY") Date DateOfDeparture , Model model){
+    @RequestMapping("/FindFlight")
+    public String findFlightView() {
+        return "private/SearchFlight";
+    }
+
+    @RequestMapping("/FlightResults")
+    public String findFlight(@RequestParam("from") String From,
+            @RequestParam("to") String To,
+            @RequestParam("dateOfDeparture") @DateTimeFormat(pattern = "yyyy-MM-dd") Date DateOfDeparture,
+            Model model) {
         List<FlightDto> flights = flightServices.findFlight(From, To, DateOfDeparture);
         model.addAttribute("flights", flights);
         return "private/FlightsView";

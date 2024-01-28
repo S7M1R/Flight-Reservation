@@ -23,19 +23,28 @@ public class ReservationController {
     @Autowired
     private EmailUtil emailUtil;
 
-    @RequestMapping("/viewReservations")
-    public String ViewReservations(@RequestParam("flightId") long FlightId, Model model){
-        FlightDto flightDto = reservationServices.ViewReservations(FlightId);
-        model.addAttribute("flights" , flightDto);
-        return "private/ViewReservations";
+    @RequestMapping("/BookTicket")
+    public String bookReservation(@RequestParam("flightId") String flightId, Model model) {
+        // Convert the flightId String to a long
+        long parsedFlightId;
+        try {
+            parsedFlightId = Long.parseLong(flightId);
+            FlightDto flightDto = reservationServices.ViewReservations(parsedFlightId);
+            model.addAttribute("flights", flightDto);
+            return "private/ViewReservations";
+        } catch (NumberFormatException e) {
+            // Handle the case when flightId is not a valid long
+            // You can log the error, return an error page, or take appropriate action
+            return "errorPage";
+        }
     }
 
     @RequestMapping("/confirmReservation")
-    public String confirmReservation(PassengerDto passengerDto,Model model) {
-         String filePath="D:\\4.8.1 version\\flight_reservation_app_5\\ticket\\booking";
+    public String confirmReservation(PassengerDto passengerDto, Model model) {
+        String filePath = "D:/4.8.1 version/flight_reservation_app_5/ticket/booking";
         ReservationDto reservation = reservationServices.ConfirmReservation(passengerDto);
         PdfGenerator pdf = new PdfGenerator();
-        pdf.generatePdf(filePath+reservation.getId()+".pdf",
+        pdf.generatePdf(filePath + reservation.getId() + ".pdf",
                 reservation.getPassenger().getFirstName(),
                 reservation.getPassenger().getEmail(),
                 reservation.getPassenger().getMobile(),
@@ -45,26 +54,26 @@ public class ReservationController {
                 reservation.getFlight().getArrivalCity());
         model.addAttribute("reservationId", reservation.getId());
         EmailUtil eUtil = new EmailUtil();
-        String Attachment = filePath+reservation.getId()+".pdf";
-        emailUtil.sendItinerary(passengerDto.getEmail(),Attachment);
-        return"confirmReservation";
+        String Attachment = filePath + reservation.getId() + ".pdf";
+        emailUtil.sendItinerary(passengerDto.getEmail(), Attachment);
+        return "confirmReservation";
     }
 
     @RequestMapping("/checkin/.com")
-    public String show(){
+    public String show() {
         return "private/startCheckedIn";
     }
 
     @RequestMapping("/procedCheckedIn")
-    public String find(@RequestParam("id") Long id, Model model){
+    public String find(@RequestParam("id") Long id, Model model) {
         Reservation reservation = reservationServices.findReservtaion(id);
         model.addAttribute("r", reservation);
         return "displayreservation";
     }
 
     @RequestMapping("/proced")
-    public String procedCheckin(@RequestParam ("id")Long id,@RequestParam("numberOfBags") int numberOfBags) {
-        ReservationUpdateRequestDto request= new ReservationUpdateRequestDto();
+    public String procedCheckin(@RequestParam("id") Long id, @RequestParam("numberOfBags") int numberOfBags) {
+        ReservationUpdateRequestDto request = new ReservationUpdateRequestDto();
         request.setId(id);
         request.setNumberOfBags(numberOfBags);
         request.setCheckedIn(true);
